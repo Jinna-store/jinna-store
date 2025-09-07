@@ -4,77 +4,252 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jinna Store - Products</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
+    :root {
+      --primary: #4caf50;
+      --primary-dark: #2e7d32;
+      --primary-light: #c8e6c9;
+      --accent: #ff9800;
+      --text: #333;
+      --text-light: #555;
+      --background: #f5f7fa;
+      --white: #ffffff;
+      --shadow: 0 2px 10px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    
+    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f7fa;
-      color: #333;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    /* Navigation */
+    /* Header Styles */
     header {
-      background-color: #4caf50;
+      background-color: var(--primary);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      color: white;
+      color: var(--white);
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-
+    
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-
+    
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
     nav a {
-      margin: 0 1rem;
       text-decoration: none;
-      color: white;
+      color: var(--white);
       font-weight: 500;
+      transition: var(--transition);
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    
+    nav a:hover, nav a.active {
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      margin: 1rem 2rem;
+      border-radius: 8px;
+    }
+    
+    .page-header h1 {
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .page-header p {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    /* Products */
+    /* Filters and Search */
+    .filters {
+      padding: 1rem 2rem;
+      background-color: var(--white);
+      margin: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 0.8rem 1rem 0.8rem 2.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    .search-box i {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+    }
+    
+    .filter-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 0.6rem 1rem;
+      background-color: var(--white);
+      border: 1px solid var(--primary-light);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    /* Products Grid */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
+      padding: 1rem 2rem 3rem;
     }
-
+    
     .product {
-      background: #fff;
-      padding: 1rem;
+      background: var(--white);
+      padding: 1.2rem;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow);
       text-align: center;
-      transition: transform 0.2s;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
     }
-
+    
     .product:hover {
       transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
     }
-
+    
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--accent);
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .product-icon {
+      font-size: 3rem;
+      margin: 1rem 0;
+      color: var(--primary);
+    }
+    
     .product h3 {
       margin: 0.5rem 0;
+      color: var(--primary-dark);
       font-size: 1.2rem;
-      color: #2e7d32;
     }
-
+    
     .product p {
+      margin: 0.3rem 0;
+      color: var(--text-light);
       font-size: 0.95rem;
-      color: #444;
+      flex-grow: 1;
     }
-
+    
     .price {
       font-weight: bold;
       color: #e65100;
-      margin-top: 0.3rem;
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    
+    .product-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .product-btn {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+    
+    .product-btn:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .product-btn.primary {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .product-btn.primary:hover {
+      background-color: var(--primary-dark);
     }
 
     /* WhatsApp Button */
@@ -89,53 +264,477 @@
       text-decoration: none;
       font-weight: bold;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 999;
+      transition: var(--transition);
+    }
+    
+    .whatsapp:hover {
+      background-color: #128C7E;
+      transform: scale(1.05);
     }
 
     /* Footer */
     footer {
+      background-color: var(--primary-dark);
+      color: white;
+      padding: 2rem 1rem;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .footer-section h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: var(--accent);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: #ddd;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background-color: var(--accent);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
       text-align: center;
-      padding: 1rem;
-      background-color: #c8e6c9;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 0.9rem;
-      margin-top: 20px;
+      color: #ccc;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .nav-toggle {
+        display: block;
+      }
+      
+      nav {
+        position: fixed;
+        top: 64px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 64px);
+        background-color: var(--primary);
+        flex-direction: column;
+        padding: 2rem;
+        transition: var(--transition);
+        z-index: 999;
+      }
+      
+      nav.active {
+        left: 0;
+      }
+      
+      .page-header, .filters {
+        margin: 0.5rem;
+      }
+      
+      .products {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        padding: 1rem;
+        gap: 1rem;
+      }
+      
+      .filters {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-group {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  
+
 <header>
-  <div class="logo">Jinna Store 🛒</div>
-  <nav>
+  <div class="logo">
+    <i class="fas fa-store"></i> Jinna Store
+  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation">
+    <i class="fas fa-bars"></i>
+  </button>
+  <nav id="nav">
     <a href="index.html">Home</a>
-    <a href="jinna-products.html">Products</a>
-    <a href="#contact">Contact</a>
+    <a href="jinna-products.html" class="active">Products</a>
+    <a href="jinna-contact.html">Contact</a>
+    <a href="jinna-about.html">About Us</a>
   </nav>
 </header>
 
-<section class="products">
-  <div class="product"><h3>🧹 Broomstick</h3><p>Strong and durable bristles for daily cleaning.</p><p class="price">₹150</p></div>
-  <div class="product"><h3>🧽 Mop</h3><p>Easy-to-use mop for spotless floors.</p><p class="price">₹100</p></div>
-  <div class="product"><h3>🪣 Bucket</h3><p>Sturdy household bucket for multiple uses.</p><p class="price">₹200</p></div>
-  <div class="product"><h3>☕ Mug</h3><p>Perfect daily-use mug for tea or coffee.</p><p class="price">₹30</p></div>
-  <div class="product"><h3>🏺 Plastic Pot</h3><p>Durable plastic pot to store water.</p><p class="price">₹120</p></div>
-  <div class="product"><h3>🧴 Phenyl</h3><p>Disinfectant for clean, germ-free surfaces.</p><p class="price">₹50</p></div>
-  <div class="product"><h3>⚗️ Acid</h3><p>Powerful stain remover (use with care).</p><p class="price">₹50</p></div>
-  <div class="product"><h3>⚪ Bleaching Powder</h3><p>Whitening and cleaning agent.</p><p class="price">₹50</p></div>
-  <div class="product"><h3>🧼 Soap Oil</h3><p>Removes grease & dirt from utensils.</p><p class="price">₹70</p></div>
-  <div class="product"><h3>🧹 Floor Wash</h3><p>Keeps floors shining and fresh.</p><p class="price">₹150</p></div>
-  <div class="product"><h3>🧴 Active Gel</h3><p>Multi-purpose gel for tough cleaning.</p><p class="price">₹180</p></div>
-  <div class="product"><h3>🍫 Chocolates</h3><p>Boomer and more sweet treats.</p><p class="price">₹1 – ₹10</p></div>
-  <div class="product"><h3>🍪 Biscuits</h3><p>Crispy and tasty tea-time snacks.</p><p class="price">₹10 – ₹40</p></div>
-  <div class="product"><h3>🧼 Soap</h3><p>Gentle soap in multiple varieties.</p><p class="price">₹45 – ₹70</p></div>
-  <div class="product"><h3>🧴 Shampoo</h3><p>Clinic Plus & Dove for strong shiny hair.</p><p class="price">₹10</p></div>
+<section class="page-header">
+  <h1>Our Products</h1>
+  <p>Discover our wide range of high-quality household essentials and daily necessities</p>
 </section>
 
-<a class="whatsapp" href="https://wa.me/919843351542" target="_blank">Chat on WhatsApp</a>
+<div class="filters">
+  <div class="search-box">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Search products..." id="searchInput">
+  </div>
+  
+  <div class="filter-group">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Cleaning</button>
+    <button class="filter-btn">Kitchen</button>
+    <button class="filter-btn">Personal Care</button>
+    <button class="filter-btn">Snacks</button>
+  </div>
+</div>
 
-<footer id="contact">
-  &copy; 2025 Jinna Store. All rights reserved.
+<section class="products">
+  <div class="product">
+    <div class="product-badge">Popular</div>
+    <div class="product-icon">🧹</div>
+    <h3>Broomstick</h3>
+    <p>Strong and durable bristles for daily cleaning</p>
+    <div class="price">₹150</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧽</div>
+    <h3>Mop</h3>
+    <p>Easy-to-use mop for spotless floors</p>
+    <div class="price">₹100</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🪣</div>
+    <h3>Bucket</h3>
+    <p>Sturdy household bucket for multiple uses</p>
+    <div class="price">₹200</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">☕</div>
+    <h3>Mug</h3>
+    <p>Perfect daily-use mug for tea or coffee</p>
+    <div class="price">₹30</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-badge">Sale</div>
+    <div class="product-icon">🏺</div>
+    <h3>Plastic Pot</h3>
+    <p>Durable plastic pot to store water</p>
+    <div class="price">₹120</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧴</div>
+    <h3>Phenyl</h3>
+    <p>Disinfectant for clean, germ-free surfaces</p>
+    <div class="price">₹50</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">⚗️</div>
+    <h3>Acid</h3>
+    <p>Powerful stain remover (use with care)</p>
+    <div class="price">₹50</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">⚪</div>
+    <h3>Bleaching Powder</h3>
+    <p>Whitening and cleaning agent</p>
+    <div class="price">₹50</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧼</div>
+    <h3>Soap Oil</h3>
+    <p>Removes grease & dirt from utensils</p>
+    <div class="price">₹70</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧹</div>
+    <h3>Floor Wash</h3>
+    <p>Keeps floors shining and fresh</p>
+    <div class="price">₹150</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧴</div>
+    <h3>Active Gel</h3>
+    <p>Multi-purpose gel for tough cleaning</p>
+    <div class="price">₹180</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-badge">New</div>
+    <div class="product-icon">🍫</div>
+    <h3>Chocolates</h3>
+    <p>Boomer and more sweet treats</p>
+    <div class="price">₹1 – ₹10</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🍪</div>
+    <h3>Biscuits</h3>
+    <p>Crispy and tasty tea-time snacks</p>
+    <div class="price">₹10 – ₹40</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧼</div>
+    <h3>Soap</h3>
+    <p>Gentle soap in multiple varieties</p>
+    <div class="price">₹45 – ₹70</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+  
+  <div class="product">
+    <div class="product-icon">🧴</div>
+    <h3>Shampoo</h3>
+    <p>Clinic Plus & Dove for strong shiny hair</p>
+    <div class="price">₹10+</div>
+    <div class="product-actions">
+      <button class="product-btn">Details</button>
+      <button class="product-btn primary">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/919843351542" target="_blank">
+  <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+</a>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Jinna Store</h3>
+      <p>Your one-stop shop for all daily essentials and household products.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="jinna-products.html">Products</a></li>
+        <li><a href="jinna-about.html">About Us</a></li>
+        <li><a href="jinna-contact.html">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="footer-section">
+      <h3>Contact Info</h3>
+      <ul class="footer-links">
+        <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City</li>
+        <li><i class="fas fa-phone"></i> +91 98433 51542</li>
+        <li><i class="fas fa-envelope"></i> info@jinnastore.com</li>
+        <li><i class="fas fa-clock"></i> Open: 9AM - 9PM (Mon-Sun)</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    &copy; 2025 Jinna Store. Managed by Samshudeen & Aalif. All rights reserved.
+  </div>
 </footer>
+
+<script>
+  // Mobile navigation toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('nav');
+  
+  navToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+  
+  // Product filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const products = document.querySelectorAll('.product');
+  const searchInput = document.getElementById('searchInput');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      const filter = button.textContent;
+      
+      // Filter products
+      products.forEach(product => {
+        if (filter === 'All') {
+          product.style.display = 'flex';
+        } else {
+          const category = product.querySelector('h3').textContent;
+          // Simple category matching - in a real app you'd use data attributes
+          if (
+            (filter === 'Cleaning' && 
+             (category.includes('Broomstick') || category.includes('Mop') || 
+              category.includes('Phenyl') || category.includes('Acid') ||
+              category.includes('Bleaching') || category.includes('Floor Wash') ||
+              category.includes('Active Gel'))) ||
+            (filter === 'Kitchen' && 
+             (category.includes('Bucket') || category.includes('Mug') || 
+              category.includes('Pot') || category.includes('Soap Oil'))) ||
+            (filter === 'Personal Care' && 
+             (category.includes('Soap') || category.includes('Shampoo'))) ||
+            (filter === 'Snacks' && 
+             (category.includes('Chocolates') || category.includes('Biscuits')))
+          ) {
+            product.style.display = 'flex';
+          } else {
+            product.style.display = 'none';
+          }
+        }
+      });
+    });
+  });
+  
+  // Search functionality
+  searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    products.forEach(product => {
+      const title = product.querySelector('h3').textContent.toLowerCase();
+      const description = product.querySelector('p').textContent.toLowerCase();
+      
+      if (title.includes(searchTerm) || description.includes(searchTerm)) {
+        product.style.display = 'flex';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  });
+  
+  // Buy Now buttons
+  const buyButtons = document.querySelectorAll('.product-btn.primary');
+  buyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const productName = button.closest('.product').querySelector('h3').textContent;
+      const message = `Hi, I'm interested in buying: ${productName}`;
+      const whatsappUrl = `https://wa.me/919843351542?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  });
+</script>
 
 </body>
 </html>
-<a href="jinna-contact.html">Contact</a>
