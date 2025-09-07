@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jinna Store - Contact</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #4caf50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-section {
+      padding: 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      background-color: #e8f5e9;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-top: 2rem;
+    }
+
+    .contact-section h1 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin: 0.3rem 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #c8e6c9;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Jinna Store 🛒</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="jinna-products.html">Products</a>
+    <a href="jinna-contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="contact-section" id="contact">
+  <h1>Contact Us</h1>
+  <p>Email: <a href="mailto:aalifif727@gmail.com">aalifif727@gmail.com</a></p>
+  <p>Phone: <a href="tel:+919843351542">98433 51542</a></p>
+  <p>WhatsApp: <a href="https://wa.me/919843351542" target="_blank">Chat Now</a></p>
+
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit">Send via Email / WhatsApp</button>
+  </form>
+</section>
+
+<a class="whatsapp" href="https://wa.me/919843351542" target="_blank">Chat on WhatsApp</a>
+
+<footer>
+  &copy; 2025 Jinna Store. Managed by Samshudeen & Aalif. All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // Email link
+    const subject = encodeURIComponent("Contact from Jinna Store Website");
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+    const mailtoLink = `mailto:aalifif727@gmail.com?subject=${subject}&body=${body}`;
+
+    // WhatsApp link
+    const waMessage = encodeURIComponent(`Hello, my name is ${name}. ${message} (Email: ${email})`);
+    const waLink = `https://wa.me/919843351542?text=${waMessage}`;
+
+    // Ask user which method
+    if(confirm("Send via Email? Press Cancel to send via WhatsApp")) {
+      window.location.href = mailtoLink;
+    } else {
+      window.open(waLink, "_blank");
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jinna Store - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #4caf50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 2rem;
+      text-align: center;
+      background-color: #e8f5e9;
+      border-radius: 8px;
+      margin: 1rem 2rem;
+    }
+
+    .hero h1 {
+      color: #2e7d32;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      padding: 2rem;
+    }
+
+    .product {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .product img {
+      max-width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .product h3 {
+      margin-top: 0.5rem;
+      color: #4caf50;
+    }
+
+    .product p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .contact-link {
+      display: block;
+      text-align: center;
+      margin: 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: #2e7d32;
+      background-color: #c8e6c9;
+      padding: 0.8rem;
+      border-radius: 6px;
+    }
+
+    .contact-link:hover {
+      background-color: #a5d6a7;
+    }
+
+    .whatsapp {
+        position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #c8e6c9;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Jinna Store 🛒</div>
+  <nav>
+    <a href="#jinna-store.html">Home</a>
+    <a href="jinna-products.html">Products</a>
+    <a href="jinna-contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h1>Welcome to Jinna Store</h1>
+  <p>All your daily essentials at one place – Mop, Broomstick, Bucket, Mug, Pot, Phenyl, Acid, Bleaching Powder, Soap & more.</p>
+</section>
+
+<section class="products">
+  <div class="product">
+    <img src="mop.jpg" alt="Mop">
+    <h3>Mop</h3>
+    <p>₹100</p>
+  </div>
+  <div class="product">
+    <img src="broomstick.jpg" alt="Broomstick">
+    <h3>Broomstick</h3>
+    <p>₹150</p>
+  </div>
+  <div class="product">
+    <img src="bucket.jpg" alt="Bucket">
+    <h3>Bucket</h3>
+    <p>₹200</p>
+  </div>
+  <div class="product">
+    <img src="mug.jpg" alt="Mug">
+    <h3>Mug</h3>
+    <p>₹30</p>
+  </div>
+  <div class="product">
+    <img src="pot.jpg" alt="Plastic Pot">
+    <h3>Plastic Pot</h3>
+    <p>₹120</p>
+  </div>
+  <div class="product">
+    <img src="phenyl.jpg" alt="Phenyl">
+    <h3>Phenyl</h3>
+    <p>₹50</p>
+  </div>
+  <div class="product">
+    <img src="acid.jpg" alt="Acid">
+    <h3>Acid</h3>
+    <p>₹50</p>
+  </div>
+  <div class="product">
+    <img src="bleaching_powder.jpg" alt="Bleaching Powder">
+    <h3>Bleaching Powder</h3>
+    <p>₹50</p>
+  </div>
+  <div class="product">
+    <img src="soapoil.jpg" alt="Soap Oil">
+    <h3>Soap Oil</h3>
+    <p>₹70</p>
+  </div>
+  <div class="product">
+    <img src="floorwash.jpg" alt="Floor Wash">
+    <h3>Floor Wash</h3>
+    <p>₹150</p>
+  </div>
+  <div class="product">
+    <img src="active_gel.jpg" alt="Active Gel">
+    <h3>Active Gel</h3>
+    <p>₹180</p>
+  </div>
+  <div class="product">
+    <img src="chocolates.jpg" alt="Chocolates">
+    <h3>Chocolates</h3>
+    <p>₹1–10</p>
+  </div>
+  <div class="product">
+    <img src="biscuits.jpg" alt="Biscuits">
+    <h3>Biscuits</h3>
+    <p>₹10–40</p>
+  </div>
+  <div class="product">
+    <img src="soap.jpg" alt="Soap">
+    <h3>Soap</h3>
+    <p>₹45–70</p>
+  </div>
+  <div class="product">
+    <img src="shampoo.jpg" alt="Shampoo">
+    <h3>Shampoo (Clinic/Dove)</h3>
+    <p>₹10+</p>
+  </div>
+</section>
+
+<a class="contact-link" href="jinna-contact.html">Contact Us</a>
+
+<a class="whatsapp" href="https://wa.me/919843351542" target="_blank">Chat on WhatsApp</a>
+
+<footer>
+  &copy; 2025 Jinna Store. Managed by Samshudeen & Aalif. All rights reserved.
+</footer>
+
+</body>
+</html>
+<a href="jinna-contact.html">Contact</a>

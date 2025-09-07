@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jinna Store - Products</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+    }
+
+    /* Navigation */
+    header {
+      background-color: #4caf50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Products */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .product {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product h3 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      color: #2e7d32;
+    }
+
+    .product p {
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #e65100;
+      margin-top: 0.3rem;
+    }
+
+    /* WhatsApp Button */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #c8e6c9;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+<header>
+  <div class="logo">Jinna Store 🛒</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="jinna-products.html">Products</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="products">
+  <div class="product"><h3>🧹 Broomstick</h3><p>Strong and durable bristles for daily cleaning.</p><p class="price">₹150</p></div>
+  <div class="product"><h3>🧽 Mop</h3><p>Easy-to-use mop for spotless floors.</p><p class="price">₹100</p></div>
+  <div class="product"><h3>🪣 Bucket</h3><p>Sturdy household bucket for multiple uses.</p><p class="price">₹200</p></div>
+  <div class="product"><h3>☕ Mug</h3><p>Perfect daily-use mug for tea or coffee.</p><p class="price">₹30</p></div>
+  <div class="product"><h3>🏺 Plastic Pot</h3><p>Durable plastic pot to store water.</p><p class="price">₹120</p></div>
+  <div class="product"><h3>🧴 Phenyl</h3><p>Disinfectant for clean, germ-free surfaces.</p><p class="price">₹50</p></div>
+  <div class="product"><h3>⚗️ Acid</h3><p>Powerful stain remover (use with care).</p><p class="price">₹50</p></div>
+  <div class="product"><h3>⚪ Bleaching Powder</h3><p>Whitening and cleaning agent.</p><p class="price">₹50</p></div>
+  <div class="product"><h3>🧼 Soap Oil</h3><p>Removes grease & dirt from utensils.</p><p class="price">₹70</p></div>
+  <div class="product"><h3>🧹 Floor Wash</h3><p>Keeps floors shining and fresh.</p><p class="price">₹150</p></div>
+  <div class="product"><h3>🧴 Active Gel</h3><p>Multi-purpose gel for tough cleaning.</p><p class="price">₹180</p></div>
+  <div class="product"><h3>🍫 Chocolates</h3><p>Boomer and more sweet treats.</p><p class="price">₹1 – ₹10</p></div>
+  <div class="product"><h3>🍪 Biscuits</h3><p>Crispy and tasty tea-time snacks.</p><p class="price">₹10 – ₹40</p></div>
+  <div class="product"><h3>🧼 Soap</h3><p>Gentle soap in multiple varieties.</p><p class="price">₹45 – ₹70</p></div>
+  <div class="product"><h3>🧴 Shampoo</h3><p>Clinic Plus & Dove for strong shiny hair.</p><p class="price">₹10</p></div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/919843351542" target="_blank">Chat on WhatsApp</a>
+
+<footer id="contact">
+  &copy; 2025 Jinna Store. All rights reserved.
+</footer>
+
+</body>
+</html>
+<a href="jinna-contact.html">Contact</a>
